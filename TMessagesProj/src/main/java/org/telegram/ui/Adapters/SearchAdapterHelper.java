@@ -229,7 +229,7 @@ public class SearchAdapterHelper {
                                         globalSearch.add(chat);
                                         globalSearchMap.put(-chat.id, chat);
                                     } else if (user != null) {
-                                        if (canAddGroupsOnly || !allowBots && user.bot || !allowSelf && user.self || !allowGlobalResults && b == 1 && !user.contact || !filter(user)) {
+                                        if (canAddGroupsOnly || (!allowBots || !org.telegram.messenger.BuildVars.BOTS_ENABLED) && user.bot || !allowSelf && user.self || !allowGlobalResults && b == 1 && !user.contact || !filter(user)) {
                                             continue;
                                         }
                                         globalSearch.add(user);
@@ -256,7 +256,7 @@ public class SearchAdapterHelper {
                                         localServerSearch.add(chat);
                                         globalSearchMap.put(-chat.id, chat);
                                     } else if (user != null) {
-                                        if (canAddGroupsOnly || !allowBots && user.bot || !allowSelf && user.self || user.id == exceptDialogId || !filter(user)) {
+                                        if (canAddGroupsOnly || (!allowBots || !org.telegram.messenger.BuildVars.BOTS_ENABLED) && user.bot || !allowSelf && user.self || user.id == exceptDialogId || !filter(user)) {
                                             continue;
                                         }
                                         localServerSearch.add(user);

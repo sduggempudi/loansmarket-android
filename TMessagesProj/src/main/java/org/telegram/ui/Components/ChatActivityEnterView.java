@@ -14623,7 +14623,7 @@ public class ChatActivityEnterView extends FrameLayout implements
     public void setBotInfo(LongSparseArray<TL_bots.BotInfo> botInfo, boolean animate) {
         lastBotInfo = botInfo;
 
-        if (botInfo.size() == 1 && botInfo.valueAt(0).user_id == dialog_id) {
+        if (org.telegram.messenger.BuildVars.BOTS_ENABLED && botInfo.size() == 1 && botInfo.valueAt(0).user_id == dialog_id) {
             TL_bots.BotInfo info = botInfo.valueAt(0);
             TL_bots.BotMenuButton menuButton = info.menu_button;
             if (menuButton instanceof TL_bots.TL_botMenuButton) {

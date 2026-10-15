@@ -678,6 +678,9 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
 //    }
 
     private void searchForContextBot(final String username, final String query) {
+        if (!org.telegram.messenger.BuildVars.BOTS_ENABLED) {
+            return;
+        }
         if (foundContextBot != null && foundContextBot.username != null && foundContextBot.username.equals(username) && searchingContextQuery != null && searchingContextQuery.equals(query)) {
             return;
         }
